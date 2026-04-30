@@ -4,17 +4,6 @@
 
 ---
 
-## 📸 Screenshots
-
-Take screenshots from these views after starting the app:
-
-1. **Dashboard** → `http://localhost:3000` — Stat cards + CPU chart + memory pie
-2. **Processes** → Click "Processes" in sidebar — Full process table
-3. **Kill Modal** → Click KILL on any process — Confirmation dialog
-4. **CPU Alert** → Wait for CPU spike above 80% — Red alert notification
-
----
-
 ## 🎯 Project Overview
 
 SysMonitor Pro monitors your computer's CPU, memory, and processes in real time — updating every second without page refresh. It looks and feels like a professional SaaS dashboard used in real companies (e.g., Datadog, New Relic).
