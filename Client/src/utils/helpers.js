@@ -38,14 +38,21 @@ export function getStatusBg(value) {
   return "bg-emerald-400";
 }
 
-// Kill process via REST API
+// Kill process via REST API — uses absolute URL to avoid proxy issues
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || "http://localhost:5000";
+
 export async function killProcess(pid) {
-  const res = await fetch("/api/process/kill", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ pid }),
-  });
-  return res.json();
+  try {
+    const res = await fetch(`${SERVER_URL}/api/process/kill`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pid }),
+    });
+    if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
+    return res.json();
+  } catch (err) {
+    return { success: false, message: `Request failed: ${err.message}` };
+  }
 }
 
 // Get status badge style
